@@ -1,0 +1,7 @@
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 1rem 1rem;
+    background-color: #171941!important;
+    border: 0.0625rem solid #e9ecef;
+}
