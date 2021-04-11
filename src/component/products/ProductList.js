@@ -4,7 +4,6 @@ import { Badge, Button } from "reactstrap";
 import { bindActionCreators } from "redux";
 import * as productActions from "../../redux/actions/productActions";
 import * as cartActions from "../../redux/actions/cartActions";
-import { Table } from "reactstrap";
 import { Link } from "react-router-dom"
 
 class ProductList extends Component {
@@ -15,6 +14,14 @@ class ProductList extends Component {
     this.props.actions.addToCart({ quantity: 1, product })
   }
   render() {
+    const divStyle = {
+      margin: "1px",
+    };
+
+    const spanStyle={
+      float:"right",
+      color:"white"
+    }
     return (
       <div>
         <h3>
@@ -22,34 +29,24 @@ class ProductList extends Component {
             {this.props.currentCategory.categoryName}
           </Badge>
         </h3>
-        <Table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Product Name</th>
-              <th>Unit Price</th>
-              <th>Quantity Per Unit</th>
-              <th>Units In Stock</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.products.map(product => (
-              <tr key={product.id}>
-                <th scope="row">{product.id}</th>
-                <td><Link to={"/saveproduct/" + product.id}>{product.productName}</Link></td>
-                <td>{product.unitPrice}</td>
-                <td>@{product.quantityPerUnit}</td>
-                <td>{product.unitsInStock}</td>
-                <td>
-                  <Button color="success" onClick={() => this.addToCart(product)}>
-                    ekle
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+        <div class="row col-sm-12">
+          {this.props.products.map(product => (
+            <div class="card col-sm-3" key={product.id} style={divStyle}>
+              <div class="card-header">
+                <Link to={"/saveproduct/" + product.id}>{product.productName}</Link>
+              </div>
+              <div class="card-body">
+              <img class="img-fluid rounded shadow-lg" src="https://demos.creative-tim.com/argon-design-system-pro/assets/img/faces/team-5.jpg"></img>
+              <br></br>
+              <span style={spanStyle}>{product.unitPrice}₺ </span>
+                <br></br>
+                <Button  style={spanStyle} color="success" onClick={() => this.addToCart(product)}>
+                  Sepete Ekle
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

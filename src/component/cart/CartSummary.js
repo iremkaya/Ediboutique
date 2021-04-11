@@ -20,8 +20,8 @@ class CartSummary extends Component {
     this.props.actions.removeFromCart(product);
   }
 
-  addFromCart(product) {
-    this.props.actions.addFromCart(product);
+  addToCart = (product) => {
+    this.props.actions.addToCart({ quantity: 1, product })
   }
 
   renderEmpty() {
@@ -41,7 +41,8 @@ class CartSummary extends Component {
           {this.props.cart.map(cartItem => (
             <DropdownItem key={cartItem.product.id}>
               {cartItem.product.productName}
-              <Badge color="success" onClick={()=>this.addFromCart(cartItem.product)}>{cartItem.quantity}  + </Badge>
+              <span>({cartItem.quantity})</span>
+              <Badge color="success" onClick={()=>this.addToCart(cartItem.product)}>  + </Badge>
               <Badge color="danger" onClick={()=>this.removeFromCart(cartItem.product)}>-</Badge>
             </DropdownItem>
           ))}
@@ -66,7 +67,8 @@ class CartSummary extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      removeFromCart: bindActionCreators(cartActions.removeFromCart, dispatch)
+      removeFromCart: bindActionCreators(cartActions.removeFromCart, dispatch),
+      addToCart: bindActionCreators(cartActions.addToCart, dispatch)
     }
   };
 }

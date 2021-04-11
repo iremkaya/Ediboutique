@@ -21,9 +21,10 @@ export default function cartReducer(state = initialState.cart, action) {
             const newState2 = state.filter(cartItem => cartItem.product.id !== action.payload.id)
             return newState2;
         case actionTypes.ADD_FROM_CART:
-            const changeItem = state.find(cartItem => cartItem.product.id === action.payload.product.id)
+            debugger;
+            const changeItem = state.find(cartItem => cartItem.product.id === action.payload.id)
             changeItem.quantity += 1;
-            return changeItem;
+            return [...state, { ...action.payload }];
         default:
             return state;
     }

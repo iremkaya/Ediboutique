@@ -9,6 +9,5 @@ export function removeFromCart(product){
 }
 
 export function addFromCart(product){
-    debugger;
     return {type:actionTypes.ADD_FROM_CART,payload:product}
 }
