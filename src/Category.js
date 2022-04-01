@@ -9,7 +9,7 @@ export default class Category extends Component {
    }
 
    getCategories=()=>{
-       fetch("http://localhost:3000/categories").then(response=>response.json()).then(data=> this.setState({categories:data}));
+       fetch("https://irem-nodejs-rest.herokuapp.com/users").then(response=>response.json()).then(data=> this.setState({categories:data}));
    }
     render() {
         return (

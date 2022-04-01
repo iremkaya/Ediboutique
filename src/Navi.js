@@ -10,7 +10,6 @@ export default class Navi extends Component {
                </div>
                <div class= "col-sm-10" >
                    <div style={{float:'right'}}>
-               <CartSummary cart={this.props.cart}></CartSummary>
                </div>
                </div>
                 

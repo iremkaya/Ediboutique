@@ -18,7 +18,6 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.getsProducts();
   }
 
   getsProducts = (categoryId) => {
@@ -52,10 +51,8 @@ export default class App extends Component {
             </div>
                 <div class="row">
                   <div class="col-xs-3">
-                    <Category changeCategory={this.changeCategory} info={navigationFeature} currenctcategory={this.state.currenctcategory}></Category>
                   </div>
                   <div class="col-xs-9">
-                    <Product products={this.state.products} info={productFeature} addToCart= {this.addToCart}></Product>
                   </div>
                 </div>
               </div>
